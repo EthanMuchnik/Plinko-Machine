@@ -39,7 +39,7 @@ def readVideo(vidName, event):
             cv2.imshow('frame', frame)
             
         # Press Q on keyboard to exit
-            if cv2.waitKey(25) != -1:
+            if cv2.waitKey(25) != -1 or event.is_set():
                 break
     
     # Break the loop

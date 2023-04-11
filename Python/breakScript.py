@@ -40,6 +40,7 @@ def mainFunc():
 
     while True:
         if returnPin != -1:
+            print("omg wadi")
             GPIO.cleanup()
             return returnPin
         
