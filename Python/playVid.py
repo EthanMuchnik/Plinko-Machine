@@ -6,6 +6,7 @@ import random as rand
 import ctypes
 import pokemon as pok
 import tkinter as tk
+import time
 
 
 
@@ -52,6 +53,46 @@ def readVideo(vidName, event):
     # Closes all the frames
     cv2.destroyAllWindows()
 
+# Read Video 
+def readVideoTime(vidName, duration, origTime):
+    # Create a VideoCapture object and read from input file
+    cap = cv2.VideoCapture(vidName)
+
+    # Check if camera opened successfully
+    if (cap.isOpened()== False):
+        print("Error opening video file") 
+    user32 = ctypes.windll.user32
+    screen_width = user32.GetSystemMetrics(0)
+    screen_height = user32.GetSystemMetrics(1)
+    
+    # Read until video is completed
+    cv2.namedWindow("frame", cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty("frame", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    while(cap.isOpened()):
+        
+    # Capture frame-by-frame
+        ret, frame = cap.read()
+        if ret == True:
+        # Display the resulting frame
+            
+            frame = cv2.resize(frame, (screen_width, screen_height))
+            cv2.imshow('Frame', frame)
+            
+        # Press Q on keyboard to exit
+            if (time.time() - origTime) > duration:
+                break
+    
+    # Break the loop
+        else:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+    
+    # When everything done, release
+    # the video capture object
+    cap.release()
+    
+    # Closes all the frames
+    cv2.destroyAllWindows()
+
 def chooseVideo(event, data):
     #Choosing Vid Logic:
     pokName = -1
@@ -78,6 +119,6 @@ def instructionsVid(event):
     readVideo("../Videos/defaultVid.mp4", event)
 
 # 
-def displayPokYouGot(pokemon,event):
-    readVideo(str(pokemon) + ".mp4", event)
+def displayItemYouGot(pokemon, duration):
+    readVideoTime(str(pokemon) + ".mp4", duration, time.time())
 

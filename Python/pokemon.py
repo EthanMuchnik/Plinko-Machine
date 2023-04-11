@@ -6,6 +6,8 @@ intermediatePok = ["charmeleon", "wartortle", "ivysaur"]
 
 finalPok = ["charizard", "blastoise", "venusaur", "raichu"]
 
+boxPrizes = ["attack", "defense", "speed", "health", "xp"]
+
 FirstEvol = 50 # XP needed to evolve
 
 LastEvol = 100 #XP needed to evolve
@@ -28,3 +30,5 @@ largeDefenseInc = 50
 largeSpeedInc = 50
 largeHealthInc = 50
 largeXPInc = 50
+
+itemReceiveDuration = 10
