@@ -8,6 +8,9 @@ import pokemon as pok
 import tkinter as tk
 
 
+
+
+
 # Read Video 
 def readVideo(vidName, event):
     # Create a VideoCapture object and read from input file
@@ -53,7 +56,7 @@ def chooseVideo(event, data):
     #Choosing Vid Logic:
     pokName = -1
     if data.returning == True:
-        pokName = data[pokemon_id]
+        pokName = data["pokemon_name"]
         if (pokName not in pok.finalPok):
             vidName = "../Videos" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
         else:
@@ -74,5 +77,5 @@ def instructionsVid(event):
 
 # 
 def displayPokYouGot(pokemon,event):
-    readVideo("defaultVid.mp4", event)
+    readVideo(str(pokemon) + ".mp4", event)
 
