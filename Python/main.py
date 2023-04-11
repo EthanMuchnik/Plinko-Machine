@@ -116,7 +116,7 @@ def mainLoop():
 
 # TODO write code to display pokemon you received for x ammount of seconds
 # The above will likely use concurrency 
-    print("1:" + str(vidName)))
+    print("1:" + str(vidName))
     vidrcv.start()
     #Amazing code to update database
     print("2")
