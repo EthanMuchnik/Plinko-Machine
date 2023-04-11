@@ -8,6 +8,15 @@ import pokemon as pok
 import tkinter as tk
 import time
 
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+
+uri = "mongodb+srv://admin:aepibooth2023@booth.fvs2kjk.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client.booth
+rfidMap = db.rfid_mappings
+collectionMap = db.users
+
 
 
 
