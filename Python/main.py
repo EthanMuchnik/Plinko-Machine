@@ -12,7 +12,7 @@ def mainLoop():
     event = mult.Event()
     defProc = mult.Process(target=PV.instructionsVid, args=(event,))
     defProc.start()
-        
+
     # Database check with RFID and return all relevant data
     # TODO RFIDData = DatabaseData() (JEWSKY)
     RFIDData = testData
@@ -22,6 +22,8 @@ def mainLoop():
     event.set()
     defProc.join()
 
+
+    input("Press Enter to continue...")
 
     pBreakBeam = mult.Process(target=brk.mainFunc)
     pVid = mult.Process(target=PV.chooseVideo, args=(event, RFIDData))
