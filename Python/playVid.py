@@ -98,6 +98,7 @@ def chooseVideo(event, data):
     pokName = -1
     itemList = []
     if data["pokemon_name"]:
+        print(data["pokemon_name"])
         pokName = data["pokemon_name"]
         if (pokName not in pok.finalPok):
             vidName = "../Videos/" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
