@@ -41,7 +41,7 @@ def mainLoop():
     newPok = pVid.exitcode
     
     if RFIDInfo["pokemon_name"] == True:
-        RFIDInfo["pokemon_xp"] += 20
+        RFIDInfo["pokemon_xp"] += pok.xpInc
         if (RFIDInfo["pokemon_name"] not in pok.finalPok):
             if breakBeam ==3 or ["pokemon_xp"] > pok.FirstEvol:
                 RFIDInfo["pokemon_name"] = pok.evolutionDict[RFIDInfo["pokemon_name"]]
@@ -65,10 +65,11 @@ def mainLoop():
 
         elif (RFIDInfo["pokemon_name"] in pok.finalPok):
             if breakBeam == 3:
-                RFIDInfo["attack_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][0]
-                RFIDInfo["defense_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][1]
-                RFIDInfo["speed_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][3]
-                RFIDInfo["health_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][4]
+                RFIDInfo["attack_xp"] += pok.largeAttackInc
+                RFIDInfo["defense_xp"] += pok.largeDefenseInc
+                RFIDInfo["speed_xp"] += pok.largeSpeedInc
+                RFIDInfo["health_xp"] += pok.largeHealthInc
+                RFIDInfo["health_xp"] += pok.largeXPInc - pok.xpInc
             elif breakBeam ==1:
                 RFIDInfo["attack_xp"] +=pok.attackInc
             elif breakBeam ==2:
