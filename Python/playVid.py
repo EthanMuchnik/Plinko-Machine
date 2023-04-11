@@ -73,7 +73,7 @@ def chooseVideo(event, data):
 
 # Initial Instructions Video
 def instructionsVid(event):
-    readVideo("defaultVid.mp4", event)
+    readVideo("../Videos/defaultVid.mp4", event)
 
 # 
 def displayPokYouGot(pokemon,event):
