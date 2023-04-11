@@ -41,6 +41,7 @@ def mainLoop():
 
     vidrcv = None
     videv = None
+    vidName = ""
     if RFIDInfo["pokemon_name"] == True:
         RFIDInfo["pokemon_xp"] += pok.xpInc
         if (RFIDInfo["pokemon_name"] not in pok.finalPok):
@@ -77,7 +78,8 @@ def mainLoop():
                 RFIDInfo["speed_xp"] += pok.largeSpeedInc
                 RFIDInfo["health_xp"] += pok.largeHealthInc
                 RFIDInfo["health_xp"] += pok.largeXPInc - pok.xpInc
-                vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/recAllBoxPrizes.mp4", pok.itemReceiveDuration))
+                vidName = "../Videos/recAllBoxPrizes.mp4"
+                vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
             else:
                 if breakBeam ==1:
                     RFIDInfo["attack_xp"] +=pok.attackInc
@@ -87,7 +89,9 @@ def mainLoop():
                     RFIDInfo["speed_xp"] +=pok.speedInc
                 elif breakBeam ==5:
                     RFIDInfo["health_xp"] +=pok.healthInc
-                vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
+                
+                vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
+                vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
                 
     else: # new
         if breakBeam ==3:
@@ -112,7 +116,7 @@ def mainLoop():
 
 # TODO write code to display pokemon you received for x ammount of seconds
 # The above will likely use concurrency 
-    print("1")
+    print("1:" + str(vidName)))
     vidrcv.start()
     #Amazing code to update database
     print("2")
