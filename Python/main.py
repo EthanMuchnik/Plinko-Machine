@@ -25,11 +25,10 @@ def mainLoop():
 
 
     # input("Press Enter to continue...")
-
-    pBreakBeam = mult.Process(target=brk.mainFunc)
-    pVid = mult.Process(target=PV.chooseVideo, args=(event, RFIDInfo))
-
     eventMain = mult.Event()
+    pBreakBeam = mult.Process(target=brk.mainFunc)
+    pVid = mult.Process(target=PV.chooseVideo, args=(eventMain, RFIDInfo))
+
     pBreakBeam.start()
     pVid.start()
 
@@ -57,8 +56,8 @@ def mainLoop():
                     RFIDInfo["pokemon_xp"] = pok.FirstEvol
                 
                 if breakBeam !=3:
-                    vidrcv = mult.Process(target=PV.readVideoTime, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
-                videv = mult.Process(target=PV.readVideoTime, args=("../Videos/ev" + RFIDInfo["pokemon_name"] + ".mp4", pok.itemReceiveDuration))
+                    vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
+                videv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/ev" + RFIDInfo["pokemon_name"] + ".mp4", pok.itemReceiveDuration))
             else:
                 if breakBeam == 1:
                     RFIDInfo["attack_xp"] +=pok.attackInc
@@ -68,7 +67,7 @@ def mainLoop():
                     RFIDInfo["speed_xp"] +=pok.speedInc
                 elif breakBeam ==5:
                     RFIDInfo["health_xp"] +=pok.healthInc
-                vidrcv = mult.Process(target=PV.readVideoTime, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
+                vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
                 
 
         elif (RFIDInfo["pokemon_name"] in pok.finalPok):
@@ -78,7 +77,7 @@ def mainLoop():
                 RFIDInfo["speed_xp"] += pok.largeSpeedInc
                 RFIDInfo["health_xp"] += pok.largeHealthInc
                 RFIDInfo["health_xp"] += pok.largeXPInc - pok.xpInc
-                vidrcv = mult.Process(target=PV.readVideoTime, args=("../Videos/recAllBoxPrizes.mp4", pok.itemReceiveDuration))
+                vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/recAllBoxPrizes.mp4", pok.itemReceiveDuration))
             else:
                 if breakBeam ==1:
                     RFIDInfo["attack_xp"] +=pok.attackInc
@@ -88,7 +87,7 @@ def mainLoop():
                     RFIDInfo["speed_xp"] +=pok.speedInc
                 elif breakBeam ==5:
                     RFIDInfo["health_xp"] +=pok.healthInc
-                vidrcv = mult.Process(target=PV.readVideoTime, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
+                vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
                 
     else: # new
         if breakBeam ==3:
@@ -109,7 +108,7 @@ def mainLoop():
         RFIDInfo["speed_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][2]
         RFIDInfo["health_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][3]
         RFIDInfo["pokemon_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][4]
-        vidrcv = mult.Process(target=PV.readVideoTime, args=("../Videos/rec" + RFIDInfo["pokemon_name"] + ".mp4", pok.itemReceiveDuration))
+        vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + RFIDInfo["pokemon_name"] + ".mp4", pok.itemReceiveDuration))
 
 # TODO write code to display pokemon you received for x ammount of seconds
 # The above will likely use concurrency 
