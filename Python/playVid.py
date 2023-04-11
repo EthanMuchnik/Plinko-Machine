@@ -104,7 +104,7 @@ def chooseVideo(event, data):
             vidName = "../Videos/" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
             itemList = ["attack", "defense",pok.evolutionDict[pokName], "speed", "health"]
         else:
-            vidName = "../Videos/" + "boxes.mp4"
+            vidName = "../Videos/" + "retboxes.mp4"
             itemList = ["attack", "defense",pokName, "speed", "health"]
     else: # new with vidname corresponding to middle pokemon
         pokName = pok.evolutionDict[pok.starterPok[rand.randint(0,3)]]
