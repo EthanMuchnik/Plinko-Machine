@@ -3,7 +3,7 @@ import playVid as PV
 import multiprocessing as mult
 import pokemon as pok
 
-testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_name": "", "pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
+testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
 
 def mainLoop():
 
