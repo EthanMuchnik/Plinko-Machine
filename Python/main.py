@@ -112,13 +112,18 @@ def mainLoop():
 
 # TODO write code to display pokemon you received for x ammount of seconds
 # The above will likely use concurrency 
+    print("1")
     vidrcv.start()
     #Amazing code to update database
-
+    print("2")
     vidrcv.join()
+    print("3")
     if videv != None:
+        print("4")
         videv.start()
+        print("5")
         videv.join()
+        print("6")
     
 # TODO Write Code to update database with RFIDInfo : Jewsky Code
 
