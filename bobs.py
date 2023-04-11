@@ -1,8 +1,6 @@
-a = 2
-b = 1
+a = {"d": "hi", "ndict": {"a": "hello", "b": "world"}}
 
-[a,b] += [3,2]
+b = a["ndict"]
+b["a"] = "goodbye"
 
-
-
-print(a,b)
+print(a["ndict"]["a"])
