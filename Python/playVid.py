@@ -55,21 +55,23 @@ def readVideo(vidName, event):
 def chooseVideo(event, data):
     #Choosing Vid Logic:
     pokName = -1
-    if data.returning == True:
+    itemList = []
+    if data["pokemon_name"]:
         pokName = data["pokemon_name"]
         if (pokName not in pok.finalPok):
             vidName = "../Videos" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
+            itemList = ["abox", "dbox",pok.evolutionDict[pokName], "sbox", "hbox"]
         else:
             vidName = "../Videos" + "boxes.mp4"
+            itemList = ["abox", "dbox",pokName, "sbox", "hbox"]
     else: # new with vidname corresponding to middle pokemon
-        defaultPokList = pok.starterPok
         pokName = pok.evolutionDict[pok.starterPok[rand.randint(0,3)]]
         vidName = "../Videos" + pokName + ".mp4"
-
+        itemList = ["bulbasaur", "squirtle",pokName, "charmander", "pikachu"]
 
     readVideo(vidName, event)
 
-    return ["bulbasaur", "squirtle",pokName, "charmander", "pikachu"]
+    return itemList
 
 # Initial Instructions Video
 def instructionsVid(event):
