@@ -16,7 +16,7 @@ import time
 def readVideo(vidName, event):
     # Create a VideoCapture object and read from input file
     cap = cv2.VideoCapture(vidName)
-
+    print("vidName:" + str(vidName))
     # Check if camera opened successfully
     if (cap.isOpened()== False):
         print("Error opening video file")
