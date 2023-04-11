@@ -62,12 +62,12 @@ def readVideoTime(vidName, duration, origTime):
     # Check if camera opened successfully
     if (cap.isOpened()== False):
         print("Error opening video file") 
-    user32 = ctypes.windll.user32
-    screen_width = user32.GetSystemMetrics(0)
-    screen_height = user32.GetSystemMetrics(1)
+    root = tk.Tk()
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
     
     # Read until video is completed
-    cv2.namedWindow("frame", cv2.WINDOW_NORMAL)
+    cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
     cv2.setWindowProperty("frame", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     while(cap.isOpened()):
         
