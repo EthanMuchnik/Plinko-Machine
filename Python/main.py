@@ -19,11 +19,10 @@ def mainLoop():
 
 
     # Wait Until RFID Read
-    event.set()
     defProc.join()
 
 
-    input("Press Enter to continue...")
+    # input("Press Enter to continue...")
 
     pBreakBeam = mult.Process(target=brk.mainFunc)
     pVid = mult.Process(target=PV.chooseVideo, args=(event, RFIDData))
