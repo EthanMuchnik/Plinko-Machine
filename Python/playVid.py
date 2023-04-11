@@ -101,10 +101,10 @@ def chooseVideo(event, data):
         pokName = data["pokemon_name"]
         if (pokName not in pok.finalPok):
             vidName = "../Videos" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
-            itemList = ["abox", "dbox",pok.evolutionDict[pokName], "sbox", "hbox"]
+            itemList = ["attack", "defense",pok.evolutionDict[pokName], "speed", "health"]
         else:
             vidName = "../Videos" + "boxes.mp4"
-            itemList = ["abox", "dbox",pokName, "sbox", "hbox"]
+            itemList = ["attack", "defense",pokName, "speed", "health"]
     else: # new with vidname corresponding to middle pokemon
         pokName = pok.evolutionDict[pok.starterPok[rand.randint(0,3)]]
         vidName = "../Videos" + pokName + ".mp4"

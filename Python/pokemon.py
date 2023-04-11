@@ -31,4 +31,5 @@ largeSpeedInc = 50
 largeHealthInc = 50
 largeXPInc = 50
 
-itemReceiveDuration = 10
+
+itemReceiveDuration = 3
