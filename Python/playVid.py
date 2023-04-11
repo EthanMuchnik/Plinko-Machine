@@ -43,7 +43,7 @@ def readVideo(vidName, event):
     
     # Break the loop
         else:
-            break
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
     
     # When everything done, release
     # the video capture object
