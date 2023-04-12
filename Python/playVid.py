@@ -52,7 +52,7 @@ def readVideo(vidName, event):
             key = cv2.waitKey(20)
             buf = ""
             if key != -1 or event.is_set():
-                
+                buf += chr(key)
                 while True:
                     theKey = cv2.waitKey(20)
                     if theKey != -1:
