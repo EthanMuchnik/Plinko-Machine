@@ -4,6 +4,7 @@ import multiprocessing as mult
 import pokemon as pok
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import string
 uri = "mongodb+srv://admin:aepibooth2023@booth.fvs2kjk.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 db = client.booth
@@ -33,8 +34,9 @@ def mainLoop():
     # rInput.join()
     defProc.join()
     rInput = queue.get()
+    print(string.split(rInput, " "))
     print("rInput: " + str(rInput))
-    user = rfidmap.find_one({'rfid':"70489d05"})
+    user = rfidmap.find_one({'rfid':rInput})
     print("user: " + str(user))
 
     username = users[user]
