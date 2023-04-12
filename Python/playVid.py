@@ -105,7 +105,6 @@ def readVideoTime(vidName, duration, origTime):
             cv2.imshow('frame', frame)
             
         # Press Q on keyboard to exit
-            print("Am I here?")
             wait_key = cv2.waitKey(20)
             if (time.time() - origTime) > duration:
                 break

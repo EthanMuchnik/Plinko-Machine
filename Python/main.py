@@ -65,7 +65,8 @@ def mainLoop():
     vidName = ""
     vidNameev = ""
     
-    if RFIDInfo["pokemon_name"] == True:
+    if RFIDInfo["pokemon_name"]:
+        print("RFIDInfo[pokemon_name]: " + str(RFIDInfo["pokemon_name"]))   
         RFIDInfo["pokemon_xp"] += pok.xpInc
         if (RFIDInfo["pokemon_name"] not in pok.finalPok):
             if breakBeam ==3 or RFIDInfo["pokemon_xp"] > pok.FirstEvol:
@@ -121,6 +122,7 @@ def mainLoop():
                 vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
                 
     else: # new
+        print("RFIDInfo[pokemon_name]: " + str(RFIDInfo["pokemon_name"]))   
         if breakBeam ==3:
             RFIDInfo["pokemon_name"] = newPok[breakBeam]
             # TODO Pokemon Speed, Attack, Defense, Health, XP attributes Set
