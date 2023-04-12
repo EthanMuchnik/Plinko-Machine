@@ -33,7 +33,7 @@ def mainLoop():
     # Wait Until RFID Read
     # rInput.join()
     defProc.join()
-    rInput = queue.get()
+    rInput = queue.get()[:-1]
     print("rInput List" + str(list(rInput)))
     print("rInput: " + str(rInput))
     user = rfidmap.find_one({'rfid':rInput})
