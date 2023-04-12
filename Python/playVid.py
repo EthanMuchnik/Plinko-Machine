@@ -150,5 +150,5 @@ def instructionsVid(event,queue):
 
 # 
 def displayItemYouGot(pokemon, duration):
-    readVideoTime(str(pokemon) + ".mp4", duration, time.time())
+    readVideoTime(str(pokemon), duration, time.time())
 
