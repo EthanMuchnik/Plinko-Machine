@@ -74,6 +74,7 @@ def readVideo(vidName, event):
     
     # Closes all the frames
     cv2.destroyAllWindows()
+    print("buf final: " + str(buf))
     return buf
 # Read Video 
 def readVideoTime(vidName, duration, origTime):
