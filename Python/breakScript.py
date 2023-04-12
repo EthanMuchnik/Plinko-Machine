@@ -5,7 +5,7 @@ def mainFunc(secondQueue):
     BEAM_PIN2 = 23
     BEAM_PIN3 = 27
     BEAM_PIN4 = 22
-    BEAM_PIN5 = 26
+    BEAM_PIN5 = 25
 
     returnPin = -1
 
