@@ -43,6 +43,7 @@ def mainLoop():
     RFIDData = users[username]
 
     RFIDInfo = RFIDData["info"]
+    print("RFIDInfo: " + str(RFIDInfo))
 
     # input("Press Enter to continue...")
     eventMain = mult.Event()
@@ -63,7 +64,7 @@ def mainLoop():
     videv = None
     vidName = ""
     vidNameev = ""
-    print("pokemon_name: " + str(RFIDInfo["pokemon_name"]))
+    
     if RFIDInfo["pokemon_name"] == True:
         RFIDInfo["pokemon_xp"] += pok.xpInc
         if (RFIDInfo["pokemon_name"] not in pok.finalPok):
