@@ -32,6 +32,7 @@ def mainLoop():
     # rInput.join()
     defProc.join()
     rInput = defProc.exitcode
+    print("rInput: " + str(rInput))
     user = rfidmap.find_one({'rfid':rInput})
 
     username = user['username']
