@@ -52,7 +52,7 @@ def readVideo(vidName, event):
             print("event.is_set(): " + str(event.is_set()))
             key = cv2.waitKey(20)
             
-            if key != -1 or event.is_set():
+            if key != -1:
                 print("key: " + str(key))
                 buf += chr(key)
                 while True:
@@ -63,6 +63,8 @@ def readVideo(vidName, event):
                         break
                 print("buf: " + str(buf))
                 # returnVal = 
+                break
+            elif(event.is_set()):
                 break
     
     # Break the loop
