@@ -122,7 +122,7 @@ def readVideoTime(vidName, duration, origTime):
     cv2.destroyAllWindows()
     root.destroy()
 
-def chooseVideo(event, data):
+def chooseVideo(event, data, secondQueue):
     #Choosing Vid Logic:
     pokName = -1
     itemList = []
@@ -140,9 +140,9 @@ def chooseVideo(event, data):
         pokName = pok.evolutionDict[pok.starterPok[rand.randint(0,3)]]
         vidName = "../Videos/" + pokName + ".mp4"
         itemList = ["bulbasaur", "squirtle",pokName, "charmander", "pikachu"]
-
+    
     readVideo(vidName, event)
-
+    secondQueue.put(itemList)
     return itemList
 
 # Initial Instructions Video

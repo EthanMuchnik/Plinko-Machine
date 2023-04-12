@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 
-def mainFunc():
+def mainFunc(secondQueue):
     BEAM_PIN = 24
     BEAM_PIN2 = 23
     BEAM_PIN3 = 27
@@ -42,6 +42,7 @@ def mainFunc():
         if returnPin != -1:
             print("omg wadi")
             GPIO.cleanup()
+            secondQueue.put(returnPin)
             return returnPin
         
 if __name__ == "__main__":

@@ -47,19 +47,20 @@ def mainLoop():
 
     # input("Press Enter to continue...")
     eventMain = mult.Event()
-    pBreakBeam = mult.Process(target=brk.mainFunc)
-    pVid = mult.Process(target=PV.chooseVideo, args=(eventMain, RFIDInfo))
+    secondQueue = mult.Queue()
+    pBreakBeam = mult.Process(target=brk.mainFunc, args=(secondQueue,))
+    pVid = mult.Process(target=PV.chooseVideo, args=(eventMain, RFIDInfo, secondQueue))
 
     pBreakBeam.start()
     pVid.start()
 
     pBreakBeam.join()
     eventMain.set()
+    breakBeam = secondQueue.get()
     pVid.join()
 
-    breakBeam = pBreakBeam.exitcode
     print("breakBeam exit code: " + str(breakBeam))
-    newPok = pVid.exitcode
+    newPok = secondQueue.get()
     print("newPok exit code: " + str(newPok))
 
     vidrcv = None
