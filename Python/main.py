@@ -40,7 +40,7 @@ def mainLoop():
     print("user: " + str(user))
 
     username = user['username']
-    RFIDData = users[username]
+    RFIDData = users.find_one({'username':username})
 
     RFIDInfo = RFIDData["info"]
     print("RFIDInfo: " + str(RFIDInfo))
