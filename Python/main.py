@@ -163,6 +163,8 @@ def mainLoop():
         print("5")
         videv.join()
         print("6")
+
+    print("RFIDData" + str(RFIDData))
     
 # TODO Write Code to update database with RFIDInfo : Jewsky Code
 
