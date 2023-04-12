@@ -38,6 +38,7 @@ def readVideo(vidName, event):
     cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
     cv2.setWindowProperty("frame", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     # Read until video is completed
+    buf = ""
     while(cap.isOpened() and not event.is_set()):
         
     # Capture frame-by-frame
@@ -50,7 +51,7 @@ def readVideo(vidName, event):
         # Press Q on keyboard to exit
             print("event.is_set(): " + str(event.is_set()))
             key = cv2.waitKey(20)
-            buf = ""
+            
             if key != -1 or event.is_set():
                 buf += chr(key)
                 while True:
@@ -73,7 +74,7 @@ def readVideo(vidName, event):
     
     # Closes all the frames
     cv2.destroyAllWindows()
-
+    return buf
 # Read Video 
 def readVideoTime(vidName, duration, origTime):
     # Create a VideoCapture object and read from input file
