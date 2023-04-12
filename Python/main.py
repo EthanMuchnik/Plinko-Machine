@@ -2,26 +2,40 @@ import breakScript as brk
 import playVid as PV
 import multiprocessing as mult
 import pokemon as pok
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+uri = "mongodb+srv://admin:aepibooth2023@booth.fvs2kjk.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client.booth
+rfidmap = db.rfid_mappings
+users = db.users
+# testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
 
-testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
+def getInput():
+    rfidTag = input("Enter RFID Tag: ")
+    return rfidTag
 
 def mainLoop():
-
+    
 
     
     event = mult.Event()
     defProc = mult.Process(target=PV.instructionsVid, args=(event,))
+    rInput = mult.Process(target=PV.instructionsVid, args=(event,))
     defProc.start()
-
+    rInput.start()
     # Database check with RFID and return all relevant data
     # TODO RFIDInfo = DatabaseData() (JEWSKY)
-    RFIDData = testData
-
-    RFIDInfo = RFIDData["info"]
 
 
     # Wait Until RFID Read
+    rInput.join()
     defProc.join()
+    user = rfidmap.find_one({'rfid':rInput.exitcode})
+
+    RFIDData = users[user['username']]
+
+    RFIDInfo = RFIDData["info"]
 
 
     # input("Press Enter to continue...")
