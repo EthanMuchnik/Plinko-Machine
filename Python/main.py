@@ -58,7 +58,9 @@ def mainLoop():
     pVid.join()
 
     breakBeam = pBreakBeam.exitcode
+    print("breakBeam exit code: " + str(breakBeam))
     newPok = pVid.exitcode
+    print("newPok exit code: " + str(newPok))
 
     vidrcv = None
     videv = None
