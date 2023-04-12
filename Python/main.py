@@ -11,16 +11,17 @@ rfidmap = db.rfid_mappings
 users = db.users
 # testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
 
-def getInput():
-    rfidTag = input("Enter RFID Tag: ")
-    return rfidTag
+# def getInput():
+#     rfidTag = input("Enter RFID Tag: ")
+#     return rfidTag
 
 def mainLoop():
     
 
     
     event = mult.Event()
-    defProc = mult.Process(target=PV.instructionsVid, args=(event,))
+    queue = mult.Queue()
+    defProc = mult.Process(target=PV.instructionsVid, args=(event,queue))
     # rInput = mult.Process(target=getInput, )
     defProc.start()
     # rInput.start()
@@ -31,7 +32,7 @@ def mainLoop():
     # Wait Until RFID Read
     # rInput.join()
     defProc.join()
-    rInput = defProc.exitcode
+    rInput = queue.get()
     print("rInput: " + str(rInput))
     user = rfidmap.find_one({'rfid':rInput})
 

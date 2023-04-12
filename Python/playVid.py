@@ -139,8 +139,10 @@ def chooseVideo(event, data):
     return itemList
 
 # Initial Instructions Video
-def instructionsVid(event):
-    return readVideo("../Videos/defaultVid.mp4", event)
+def instructionsVid(event,queue):
+    
+    queue.put(readVideo("../Videos/defaultVid.mp4", event))
+    return 0
 
 # 
 def displayItemYouGot(pokemon, duration):
