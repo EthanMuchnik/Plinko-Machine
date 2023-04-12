@@ -21,7 +21,7 @@ def mainLoop():
     
     event = mult.Event()
     defProc = mult.Process(target=PV.instructionsVid, args=(event,))
-    rInput = mult.Process(target=PV.instructionsVid, args=(event,))
+    rInput = mult.Process(target=getInput, args=(event,))
     defProc.start()
     rInput.start()
     # Database check with RFID and return all relevant data
