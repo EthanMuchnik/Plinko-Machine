@@ -1,4 +1,6 @@
+myquery = { "username": "notDavid" }
+# newvalues = { "$set": { "info.pokemon_name": "pikachu"}}
 
-# newvalues = { "$set": { "rfid": "70489d05"}}
+# collection2.update_one(myquery, newvalues)
 
-# collection.update_one(myquery, newvalues)
+# print(get_user('RANDOMTAG'))

@@ -165,7 +165,7 @@ def mainLoop():
         print("6")
 
     print("RFIDData" + str(RFIDData))
-    users.update_one({"_id": RFIDData["username"]}, {"$set": RFIDData})
+    users.update_one({"username": RFIDData[username]}, {"$set": RFIDData})
 # TODO Write Code to update database with RFIDInfo : Jewsky Code
 
 
