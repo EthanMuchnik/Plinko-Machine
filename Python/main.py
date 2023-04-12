@@ -34,7 +34,7 @@ def mainLoop():
     defProc.join()
     rInput = queue.get()
     print("rInput: " + str(rInput))
-    user = rfidmap.find_one({'rfid':rInput})
+    user = rfidmap.find_one({'rfid':"70489d05"})
     print("user: " + str(user))
 
     username = users[user]
