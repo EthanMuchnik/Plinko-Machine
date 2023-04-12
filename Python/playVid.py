@@ -49,15 +49,17 @@ def readVideo(vidName, event):
             
         # Press Q on keyboard to exit
             print("event.is_set(): " + str(event.is_set()))
-            start_time = time.time()
-            theInput = None
-            while True:
-                if time.time() - start_time > 0.03:
-                    break
-                theInput = input("gimmeRFID")
-                print("theInput: " + str(theInput))
-
-            if theInput or event.is_set():
+            key = cv2.waitKey(20)
+            buf = ""
+            if key != -1 or event.is_set():
+                
+                while True:
+                    theKey = cv2.waitKey(20)
+                    if theKey != -1:
+                        buf += chr(theKey)
+                    else:
+                        break
+                print("buf: " + str(buf))
                 # returnVal = 
                 break
     
