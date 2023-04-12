@@ -6,7 +6,7 @@ intermediatePok = ["charmeleon", "wartortle", "ivysaur"]
 
 finalPok = ["charizard", "blastoise", "venusaur", "raichu"]
 
-boxPrizes = ["attack", "defense", "speed", "health", "xp"]
+boxPrizes = ["attack", "defense", "xp","speed", "health"]
 
 FirstEvol = 50 # XP needed to evolve
 
