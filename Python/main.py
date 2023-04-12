@@ -35,6 +35,7 @@ def mainLoop():
     rInput = queue.get()
     print("rInput: " + str(rInput))
     user = rfidmap.find_one({'rfid':rInput})
+    print("user: " + str(user))
 
     username = users[user]
     RFIDData = users[username]
