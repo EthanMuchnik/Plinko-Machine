@@ -32,4 +32,4 @@ largeHealthInc = 50
 largeXPInc = 50
 
 
-itemReceiveDuration = 3000
+itemReceiveDuration = 2

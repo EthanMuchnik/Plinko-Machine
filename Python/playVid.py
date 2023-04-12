@@ -102,7 +102,7 @@ def readVideoTime(vidName, duration, origTime):
         # Display the resulting frame
             
             frame = cv2.resize(frame, (screen_width, screen_height))
-            cv2.imshow('Frame', frame)
+            cv2.imshow('frame', frame)
             
         # Press Q on keyboard to exit
             print("Am I here?")
