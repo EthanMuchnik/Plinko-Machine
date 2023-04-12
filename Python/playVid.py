@@ -105,6 +105,7 @@ def readVideoTime(vidName, duration, origTime):
             cv2.imshow('Frame', frame)
             
         # Press Q on keyboard to exit
+            print("Am I here?")
             if (time.time() - origTime) > duration:
                 break
     
@@ -117,7 +118,9 @@ def readVideoTime(vidName, duration, origTime):
     cap.release()
     
     # Closes all the frames
+    
     cv2.destroyAllWindows()
+    root.destroy()
 
 def chooseVideo(event, data):
     #Choosing Vid Logic:
