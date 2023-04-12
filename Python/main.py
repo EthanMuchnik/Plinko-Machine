@@ -95,6 +95,7 @@ def mainLoop():
                     RFIDInfo["speed_xp"] +=pok.speedInc
                 elif breakBeam ==5:
                     RFIDInfo["health_xp"] +=pok.healthInc
+                print("breakBeam: " + str(breakBeam))
                 vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
                 vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
                 
