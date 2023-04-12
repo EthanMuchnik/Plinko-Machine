@@ -49,7 +49,8 @@ def readVideo(vidName, event):
             
         # Press Q on keyboard to exit
             print("event.is_set(): " + str(event.is_set()))
-            if cv2.waitKey(25) != -1 or event.is_set():
+            if cv2.waitKey(0) != -1 or event.is_set():
+                # returnVal = 
                 break
     
     # Break the loop
@@ -127,7 +128,7 @@ def chooseVideo(event, data):
 
 # Initial Instructions Video
 def instructionsVid(event):
-    readVideo("../Videos/defaultVid.mp4", event)
+    return readVideo("../Videos/defaultVid.mp4", event)
 
 # 
 def displayItemYouGot(pokemon, duration):

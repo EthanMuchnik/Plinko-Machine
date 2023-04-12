@@ -20,11 +20,9 @@ def mainLoop():
 
     
     event = mult.Event()
-    PV.instructionsVid(event)
-    
-    # mult.Process(target=PV.instructionsVid, args=(event,))
+    defProc = mult.Process(target=PV.instructionsVid, args=(event,))
     # rInput = mult.Process(target=getInput, )
-    # defProc.start()
+    defProc.start()
     # rInput.start()
     # Database check with RFID and return all relevant data
     # TODO RFIDInfo = DatabaseData() (JEWSKY)
@@ -32,9 +30,9 @@ def mainLoop():
 
     # Wait Until RFID Read
     # rInput.join()
-    rInput = getInput()
-    # defProc.join()
-    user = rfidmap.find_one({'rfid':rInput})
+    defProc.join()
+    rInput = defProc.exitcode
+    user = rfidmap.find_one({'rfid':rInput.exitcode})
 
     RFIDData = users[user['username']]
 
