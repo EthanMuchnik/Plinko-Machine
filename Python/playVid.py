@@ -120,6 +120,7 @@ def chooseVideo(event, data):
     #Choosing Vid Logic:
     pokName = -1
     itemList = []
+    print("pokemon_name: " + str(data["pokemon_name"]))
     if data["pokemon_name"]:
         print(data["pokemon_name"])
         pokName = data["pokemon_name"]
