@@ -67,7 +67,7 @@ def mainLoop():
     videv = None
     vidName = ""
     vidNameev = ""
-    
+    # LFG
     if RFIDInfo["pokemon_name"]:
         print("RFIDInfo[pokemon_name]: " + str(RFIDInfo["pokemon_name"]))   
         RFIDInfo["pokemon_xp"] += pok.xpInc
