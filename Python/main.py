@@ -34,7 +34,8 @@ def mainLoop():
     rInput = defProc.exitcode
     user = rfidmap.find_one({'rfid':rInput})
 
-    RFIDData = users[user['username']]
+    username = user['username']
+    RFIDData = users[username]
 
     RFIDInfo = RFIDData["info"]
 
