@@ -39,6 +39,7 @@ def mainLoop():
     if user !=None:
         username = user['username']
     else:
+        print("yooo wassup")
         PV.readVideoTime("../Videos/notRegistered.mp4", 5, time.time())
         return
     RFIDInfo = users.find_one({'username':username})
