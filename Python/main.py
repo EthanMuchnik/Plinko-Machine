@@ -86,6 +86,7 @@ def mainLoop():
                 
                 vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
                 if breakBeam !=3:
+                    vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
                     vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
                 
                 vidNameev = "../Videos/ev" + RFIDInfo["pokemon_name"] + ".mp4"
@@ -153,7 +154,8 @@ def mainLoop():
 # The above will likely use concurrency 
     print("1:" + str(vidName))
     print("1:" + str(vidNameev))
-    vidrcv.start()
+    if vidrcv != None:
+        vidrcv.start()
     #Amazing code to update database
     print("2")
     vidrcv.join()
