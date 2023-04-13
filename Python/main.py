@@ -39,7 +39,9 @@ def mainLoop():
     if user !=None:
         username = user['username']
     else:
-        PV.readVideoTime("notRegistered.mp4", 5, time.time())
+        ErrVid = mult.Process(target = PV.readVideoTime,args=("notRegistered.mp4", 5, time.time()))
+        ErrVid.start()
+        ErrVid.join()
         return
     RFIDInfo = users.find_one({'username':username})
 
