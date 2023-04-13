@@ -9,13 +9,17 @@ collection2 = db.users
 def get_user(rfid):
   return collection.find_one({"rfid": rfid})
 
-myquery = { "username": "notDavid" }
-newvalues = { "$set": { "info.pokemon_name": ""}}
+# myquery = { "username": "notDavid" }
+# newvalues = { "$set": { "info.pokemon_name": ""}}
 
-collection2.update_one(myquery, newvalues)
+# collection2.update_one(myquery, newvalues)
 
-print(get_user('RANDOMTAG'))
+# print(get_user('RANDOMTAG'))
 
 for i in collection2.find():
     print(i)
+
+for i in collection.find():
+    print(i)
+
 

@@ -10,7 +10,7 @@ client = MongoClient(uri)
 db = client.booth
 rfidmap = db.rfid_mappings
 users = db.users
-# testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_name": "raichu"}}
+# testData = {"rfid": "123456789","username": "kidNamedKid", "info" : {"pokemon_xp": 0, "attack_xp": 0, "defense_xp": 0, "speed_xp": 0, "health_xp": 0, "pokemon_id": "raichu"}}
 
 # def getInput():
 #     rfidTag = input("Enter RFID Tag: ")
@@ -39,10 +39,10 @@ def mainLoop():
     user = rfidmap.find_one({'rfid':rInput})
     print("user: " + str(user))
 
-    username = user['username']
-    RFIDData = users.find_one({'username':username})
+    # username = user['username']
+    # RFIDData = users.find_one({'username':username})
 
-    RFIDInfo = RFIDData["info"]
+    RFIDInfo = user
     print("RFIDInfo: " + str(RFIDInfo))
 
     # input("Press Enter to continue...")
@@ -68,20 +68,20 @@ def mainLoop():
     vidName = ""
     vidNameev = ""
     # LFG
-    if RFIDInfo["pokemon_name"]:
-        print("RFIDInfo[pokemon_name]: " + str(RFIDInfo["pokemon_name"]))   
+    if RFIDInfo["pokemon_id"]:
+        print("RFIDInfo[pokemon_id]: " + str(RFIDInfo["pokemon_id"]))   
         RFIDInfo["pokemon_xp"] += pok.xpInc
-        if (RFIDInfo["pokemon_name"] not in pok.finalPok):
+        if (RFIDInfo["pokemon_id"] not in pok.finalPok):
             if breakBeam ==3 or RFIDInfo["pokemon_xp"] > pok.FirstEvol:
 
-                RFIDInfo["attack_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][0]
-                RFIDInfo["defense_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][1]
-                RFIDInfo["speed_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][3]
-                RFIDInfo["health_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_name"]][4]
-                RFIDInfo["pokemon_name"] = pok.evolutionDict[RFIDInfo["pokemon_name"]]
-                if RFIDInfo["pokemon_name"] in pok.finalPok:
+                RFIDInfo["attack_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_id"]][0]
+                RFIDInfo["defense_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_id"]][1]
+                RFIDInfo["speed_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_id"]][3]
+                RFIDInfo["health_xp"] += pok.evolutionStatBoost[RFIDInfo["pokemon_id"]][4]
+                RFIDInfo["pokemon_id"] = pok.evolutionDict[RFIDInfo["pokemon_id"]]
+                if RFIDInfo["pokemon_id"] in pok.finalPok:
                     RFIDInfo["pokemon_xp"] = pok.LastEvol
-                elif RFIDInfo["pokemon_name"] not in pok.finalPok:
+                elif RFIDInfo["pokemon_id"] not in pok.finalPok:
                     RFIDInfo["pokemon_xp"] = pok.FirstEvol
                 
                 vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
@@ -89,7 +89,7 @@ def mainLoop():
                     vidName = "../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4"
                     vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
                 
-                vidNameev = "../Videos/ev" + RFIDInfo["pokemon_name"] + ".mp4"
+                vidNameev = "../Videos/ev" + RFIDInfo["pokemon_id"] + ".mp4"
                 videv = mult.Process(target=PV.displayItemYouGot, args=(vidNameev, pok.itemReceiveDuration))
             else:
                 if breakBeam == 1:
@@ -105,7 +105,7 @@ def mainLoop():
                 vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + pok.boxPrizes[breakBeam -1] + ".mp4", pok.itemReceiveDuration))
                 
 
-        elif (RFIDInfo["pokemon_name"] in pok.finalPok):
+        elif (RFIDInfo["pokemon_id"] in pok.finalPok):
             if breakBeam == 3:
                 RFIDInfo["attack_xp"] += pok.largeAttackInc
                 RFIDInfo["defense_xp"] += pok.largeDefenseInc
@@ -128,27 +128,27 @@ def mainLoop():
                 vidrcv = mult.Process(target=PV.displayItemYouGot, args=(vidName, pok.itemReceiveDuration))
                 
     else: # new
-        print("RFIDInfo[pokemon_name]: " + str(RFIDInfo["pokemon_name"]))   
+        print("RFIDInfo[pokemon_id]: " + str(RFIDInfo["pokemon_id"]))   
         if breakBeam ==3:
-            RFIDInfo["pokemon_name"] = newPok[breakBeam]
+            RFIDInfo["pokemon_id"] = newPok[breakBeam]
             # TODO Pokemon Speed, Attack, Defense, Health, XP attributes Set
         else:
             # TODO Pokemon Speed, Attack, Defense, Health, XP attributes Set
             if breakBeam == 1:
-                RFIDInfo["pokemon_name"] = "balbasaur"
+                RFIDInfo["pokemon_id"] = "balbasaur"
             elif breakBeam ==2:
-                RFIDInfo["pokemon_name"] = "squirtle"
+                RFIDInfo["pokemon_id"] = "squirtle"
             elif breakBeam ==4:
-                RFIDInfo["pokemon_name"] = "charmander"
+                RFIDInfo["pokemon_id"] = "charmander"
             elif breakBeam ==5:
-                RFIDInfo["pokemon_name"] = "pikachu"
-        RFIDInfo["attack_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][0]
-        RFIDInfo["defense_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][1]
-        RFIDInfo["speed_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][2]
-        RFIDInfo["health_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][3]
-        RFIDInfo["pokemon_xp"] = pok.baseStats[RFIDInfo["pokemon_name"]][4]
-        vidName = "../Videos/rec" + RFIDInfo["pokemon_name"] + ".mp4"
-        vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + RFIDInfo["pokemon_name"] + ".mp4", pok.itemReceiveDuration))
+                RFIDInfo["pokemon_id"] = "pikachu"
+        RFIDInfo["attack_xp"] = pok.baseStats[RFIDInfo["pokemon_id"]][0]
+        RFIDInfo["defense_xp"] = pok.baseStats[RFIDInfo["pokemon_id"]][1]
+        RFIDInfo["speed_xp"] = pok.baseStats[RFIDInfo["pokemon_id"]][2]
+        RFIDInfo["health_xp"] = pok.baseStats[RFIDInfo["pokemon_id"]][3]
+        RFIDInfo["pokemon_xp"] = pok.baseStats[RFIDInfo["pokemon_id"]][4]
+        vidName = "../Videos/rec" + RFIDInfo["pokemon_id"] + ".mp4"
+        vidrcv = mult.Process(target=PV.displayItemYouGot, args=("../Videos/rec" + RFIDInfo["pokemon_id"] + ".mp4", pok.itemReceiveDuration))
 
 # TODO write code to display pokemon you received for x ammount of seconds
 # The above will likely use concurrency 
@@ -168,8 +168,8 @@ def mainLoop():
         videv.join()
         print("6")
 
-    print("RFIDData" + str(RFIDData))
-    users.update_one({"username": RFIDData["username"]}, {"$set": RFIDData})
+    print("RFIDData" + str(RFIDInfo))
+    users.update_one({"username": RFIDInfo["username"]}, {"$set": RFIDInfo})
 # TODO Write Code to update database with RFIDInfo : Jewsky Code
 
 #LETS GOOOOOOOOOOOOOOOO

@@ -1,5 +1,5 @@
-myquery = { "username": "notDavid" }
-# newvalues = { "$set": { "info.pokemon_name": "pikachu"}}
+avid" }
+# newvalues = { "$set": { "info.pokemon_name": ""}}
 
 # collection2.update_one(myquery, newvalues)
 
