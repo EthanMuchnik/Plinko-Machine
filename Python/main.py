@@ -158,7 +158,8 @@ def mainLoop():
         vidrcv.start()
     #Amazing code to update database
     print("2")
-    vidrcv.join()
+    if vidrcv != None:
+        vidrcv.join()
     print("3")
     if videv != None:
         print("4")
