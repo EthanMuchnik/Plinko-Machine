@@ -135,7 +135,7 @@ def mainLoop():
         else:
             # TODO Pokemon Speed, Attack, Defense, Health, XP attributes Set
             if breakBeam == 1:
-                RFIDInfo["pokemon_id"] = "balbasaur"
+                RFIDInfo["pokemon_id"] = "bulbasaur"
             elif breakBeam ==2:
                 RFIDInfo["pokemon_id"] = "squirtle"
             elif breakBeam ==4:
