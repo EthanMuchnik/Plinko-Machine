@@ -126,10 +126,10 @@ def chooseVideo(event, data, secondQueue):
     #Choosing Vid Logic:
     pokName = -1
     itemList = []
-    print("pokemon_name: " + str(data["pokemon_name"]))
-    if data["pokemon_name"]:
-        print(data["pokemon_name"])
-        pokName = data["pokemon_name"]
+    print("pokemon_id: " + str(data["pokemon_id"]))
+    if data["pokemon_id"]:
+        print(data["pokemon_id"])
+        pokName = data["pokemon_id"]
         if (pokName not in pok.finalPok):
             vidName = "../Videos/" + "ret"+ pok.evolutionDict[pokName] + ".mp4"
             itemList = ["attack", "defense",pok.evolutionDict[pokName], "speed", "health"]
