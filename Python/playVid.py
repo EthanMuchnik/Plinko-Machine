@@ -82,7 +82,7 @@ def readVideo(vidName, event):
 # Read Video 
 def readVideoTime(vidName, duration, origTime):
     # Create a VideoCapture object and read from input file
-    print("pogs" + str(time.time()) + str(origTime))
+    print("pogs" + str(time.time()) + " " + str(origTime))
     cap = cv2.VideoCapture(vidName)
 
     # Check if camera opened successfully
