@@ -85,6 +85,7 @@ def readVideoTime(vidName, duration, origTime):
     print("pogs" + str(time.time()) + " " + str(origTime) + " " + str(vidName))
     cap = cv2.VideoCapture(vidName)
 
+    print(cap.isOpened())
     # Check if camera opened successfully
     if (cap.isOpened()== False):
         print("Error opening video file") 
@@ -95,6 +96,7 @@ def readVideoTime(vidName, duration, origTime):
     # Read until video is completed
     cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
     cv2.setWindowProperty("frame", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    print(cap.isOpened())
     while(cap.isOpened()):
         print("hi")
     # Capture frame-by-frame
