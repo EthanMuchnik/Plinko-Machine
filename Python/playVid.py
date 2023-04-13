@@ -90,6 +90,7 @@ def readVideoTime(vidName, duration, origTime):
     if (cap.isOpened()== False):
         print("Error opening video file") 
     root = tk.Tk()
+    
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     
