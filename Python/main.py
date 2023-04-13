@@ -4,6 +4,7 @@ import multiprocessing as mult
 import pokemon as pok
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import time
 # import string
 uri = "mongodb+srv://admin:aepibooth2023@booth.fvs2kjk.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
@@ -16,10 +17,7 @@ users = db.users
 #     rfidTag = input("Enter RFID Tag: ")
 #     return rfidTag
 
-def mainLoop():
-    
-
-    
+def mainLoop():    
     event = mult.Event()
     queue = mult.Queue()
     defProc = mult.Process(target=PV.instructionsVid, args=(event,queue))
@@ -38,8 +36,11 @@ def mainLoop():
     print("rInput: " + str(rInput))
     user = rfidmap.find_one({'rfid':rInput})
     print("user: " + str(user))
-
-    username = user['username']
+    if user !=None:
+        username = user['username']
+    else:
+        PV.readVideoTime("notRegistered.mp4", 5, time.time())
+        return
     RFIDInfo = users.find_one({'username':username})
 
     # RFIDInfo = user
