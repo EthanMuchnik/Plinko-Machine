@@ -39,10 +39,10 @@ def mainLoop():
     user = rfidmap.find_one({'rfid':rInput})
     print("user: " + str(user))
 
-    # username = user['username']
-    # RFIDData = users.find_one({'username':username})
+    username = user['username']
+    RFIDInfo = users.find_one({'username':username})
 
-    RFIDInfo = user
+    # RFIDInfo = user
     print("RFIDInfo: " + str(RFIDInfo))
 
     # input("Press Enter to continue...")
