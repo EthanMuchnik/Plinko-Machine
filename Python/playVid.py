@@ -17,10 +17,6 @@ db = client.booth
 rfidMap = db.rfid_mappings
 collectionMap = db.users
 
-
-
-
-
 # Read Video 
 def readVideo(vidName, event):
     # Create a VideoCapture object and read from input file
@@ -196,7 +192,7 @@ def instructionsVid(event,queue):
     queue.put(readVideo("../Videos/defaultVid.mp4", event))
     return 0
 
-# 
+# Display the item you got
 def displayItemYouGot(pokemon, duration):
     readVideoTime(str(pokemon), duration, time.time())
 

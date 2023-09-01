@@ -17,7 +17,7 @@ evolutionStatBoost = {"charmander": [20,20,20,20,20], "charmeleon": [20,20,20,20
 
 baseStats = {"charmander": [0,0,0,0,0], "bulbasaur": [0,0,0,0,0], "squirtle": [0,0,0,0,0], "pikachu": [0,0,0,0,0], "raichu": [0,0,0,0,0], "ivysaur": [0,0,0,0,0], "charmeleon": [0,0,0,0,0], "wartortle": [0,0,0,0,0]}
 
-# more stuff
+# more stat defaults
 
 attackInc = 20
 defenseInc = 20
